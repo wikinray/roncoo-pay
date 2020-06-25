@@ -15,16 +15,6 @@
  */
 package com.roncoo.pay.user.service.impl;
 
-import java.math.BigDecimal;
-import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-import org.springframework.transaction.annotation.Transactional;
-
 import com.roncoo.pay.account.entity.RpAccount;
 import com.roncoo.pay.account.service.RpAccountService;
 import com.roncoo.pay.common.core.enums.PublicStatusEnum;
@@ -36,6 +26,15 @@ import com.roncoo.pay.user.dao.RpUserInfoDao;
 import com.roncoo.pay.user.entity.RpUserInfo;
 import com.roncoo.pay.user.service.BuildNoService;
 import com.roncoo.pay.user.service.RpUserInfoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.math.BigDecimal;
+import java.util.Date;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 /**
  * 用户信息service实现类
@@ -103,6 +102,7 @@ public class RpUserInfoServiceImpl implements RpUserInfoService{
         rpUserInfo.setUserNo(userNo);
         rpUserInfo.setMobile(mobile);
         rpUserInfo.setPassword(EncryptUtil.encodeMD5String(password));
+        rpUserInfo.setPayPwd(EncryptUtil.encodeMD5String("123456"));
         rpUserInfo.setVersion(0);
         this.saveData(rpUserInfo);
 
